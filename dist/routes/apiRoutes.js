@@ -1,0 +1,25 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const express_async_handler_1 = __importDefault(require("express-async-handler"));
+const apiController_1 = require("../controllers/apiController");
+const router = express_1.default.Router();
+router.get("/test-footystats", apiController_1.testApiConnection);
+router.get("/country", apiController_1.listCountry);
+router.get("/today-matches", apiController_1.listTodayMatches);
+router.get("/leagues", apiController_1.listLeagues);
+router.get("/league-season", (0, express_async_handler_1.default)(apiController_1.listLeagueSeason));
+router.get("/league-matches", (0, express_async_handler_1.default)(apiController_1.listLeagueMatches));
+router.get("/league-teams", (0, express_async_handler_1.default)(apiController_1.listLeagueTeams));
+router.get("/league-players", (0, express_async_handler_1.default)(apiController_1.listLeaguePlayers));
+router.get("/league-referees", (0, express_async_handler_1.default)(apiController_1.listLeagueReferees));
+router.get("/individual-team", (0, express_async_handler_1.default)(apiController_1.searchIndividualTeam));
+router.get("/last-stats-team", (0, express_async_handler_1.default)(apiController_1.searchLastStatsTeam));
+router.get("/match-details", (0, express_async_handler_1.default)(apiController_1.listMatchDetails));
+router.get("/league-table", (0, express_async_handler_1.default)(apiController_1.searchLeagueTable));
+router.get("/player", (0, express_async_handler_1.default)(apiController_1.searchPlayer));
+router.get("/referee", (0, express_async_handler_1.default)(apiController_1.searchReferee));
+exports.default = router;
