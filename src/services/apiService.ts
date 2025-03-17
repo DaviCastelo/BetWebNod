@@ -13,7 +13,9 @@ export const testConnection = async () => {
 
 export const getLeagues = async () => {
   try {
-    const response = await axios.get(`${API_URL}/league-list?key=${API_KEY}`);
+    const response = await axios.get(
+      `${API_URL}/league-list?key=${API_KEY}&chosen_leagues_only=true`
+    );
     return response.data;
   } catch (error) {
     console.error("Erro ao obter a lista de ligas:", error);
@@ -62,9 +64,9 @@ export const getLeagueMatches = async (seasonId: string) => {
   }
 };
 
-export const getLeagueTeams = async (seasonId: string) => {
+export const getLeagueTeams = async (seasonId: number) => {
   try {
-    const BASE_URL = `${API_URL}/league-teams?key=${API_KEY}&season_id=${seasonId}&include=stats`;
+    const BASE_URL = `${API_URL}/league-teams?key=${API_KEY}&season_id=${seasonId}`;
     const response = await axios.get(BASE_URL);
     return response.data;
   } catch (error) {

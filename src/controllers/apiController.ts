@@ -121,7 +121,7 @@ export const listLeagueTeams = async (
         .json({ success: false, message: "season_id é obrigatório" });
       return;
     }
-    const teamsData = await getLeagueTeams(season_id as string);
+    const teamsData = await getLeagueTeams(Number(season_id));
     res.json(teamsData);
   } catch (error) {
     console.error("Erro ao obter dados dos times:", error);
