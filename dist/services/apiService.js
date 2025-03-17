@@ -28,7 +28,7 @@ const testConnection = () => __awaiter(void 0, void 0, void 0, function* () {
 exports.testConnection = testConnection;
 const getLeagues = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const response = yield axios_1.default.get(`${dotenvConfig_1.API_URL}/league-list?key=${dotenvConfig_1.API_KEY}`);
+        const response = yield axios_1.default.get(`${dotenvConfig_1.API_URL}/league-list?key=${dotenvConfig_1.API_KEY}&chosen_leagues_only=true`);
         return response.data;
     }
     catch (error) {
@@ -82,7 +82,7 @@ const getLeagueMatches = (seasonId) => __awaiter(void 0, void 0, void 0, functio
 exports.getLeagueMatches = getLeagueMatches;
 const getLeagueTeams = (seasonId) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const BASE_URL = `${dotenvConfig_1.API_URL}/league-teams?key=${dotenvConfig_1.API_KEY}&season_id=${seasonId}&include=stats`;
+        const BASE_URL = `${dotenvConfig_1.API_URL}/league-teams?key=${dotenvConfig_1.API_KEY}&season_id=${seasonId}`;
         const response = yield axios_1.default.get(BASE_URL);
         return response.data;
     }

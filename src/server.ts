@@ -2,6 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import apiRoutes from "./routes/apiRoutes";
 import express from "express";
+import openAIRoutes from "./routes/openAIRoutes";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(
 app.use(express.json());
 app.use("/api", apiRoutes);
 app.use("/api/footystats", apiRoutes);
+app.use("/api/openai", openAIRoutes);
 
 app.use(cors());
 

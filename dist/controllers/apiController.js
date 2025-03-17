@@ -108,7 +108,7 @@ const listLeagueTeams = (req, res) => __awaiter(void 0, void 0, void 0, function
                 .json({ success: false, message: "season_id é obrigatório" });
             return;
         }
-        const teamsData = yield (0, apiService_1.getLeagueTeams)(season_id);
+        const teamsData = yield (0, apiService_1.getLeagueTeams)(Number(season_id));
         res.json(teamsData);
     }
     catch (error) {
