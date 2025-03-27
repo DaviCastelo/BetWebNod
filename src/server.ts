@@ -18,9 +18,9 @@ const port = process.env.PORT || 3000;
 //);
 app.use(
   cors({
-    origin: "*", // Permite qualquer origem
-    methods: "*", // Permite todos os métodos HTTP
-    allowedHeaders: "*", // Permite todos os cabeçalhos
+    origin: ["front-bets-git-main-davicastelos-projects.vercel.app", "http://localhost:8080","0.0.0.0"],// Permite qualquer origem
+    methods: ["GET", "POST", "PUT", "DELETE"],// Permite todos os métodos HTTP
+    allowedHeaders:["Content-Type", "Authorization"], // Permite todos os cabeçalhos
     exposedHeaders: "*", // Expõe todos os cabeçalhos na resposta
     credentials: true, // Permite credenciais (cookies, auth headers)
     maxAge: 86400, // Cache de CORS por 24 horas
