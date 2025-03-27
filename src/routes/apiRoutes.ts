@@ -1,6 +1,8 @@
 import express from "express";
 import asyncHandler from "express-async-handler";
 import {
+  getBTTSStats,
+  getOdds,
   listCountry,
   listLeagueMatches,
   listLeaguePlayers,
@@ -37,5 +39,8 @@ router.get("/match-details", asyncHandler(listMatchDetails));
 router.get("/league-table", asyncHandler(searchLeagueTable));
 router.get("/player", asyncHandler(searchPlayer));
 router.get("/referee", asyncHandler(searchReferee));
+
+router.get("/odds", getOdds);
+router.get("/btts", getBTTSStats);
 
 export default router;

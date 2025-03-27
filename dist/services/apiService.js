@@ -28,7 +28,7 @@ const testConnection = () => __awaiter(void 0, void 0, void 0, function* () {
 exports.testConnection = testConnection;
 const getLeagues = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const response = yield axios_1.default.get(`${dotenvConfig_1.API_URL}/league-list?key=${dotenvConfig_1.API_KEY}`);
+        const response = yield axios_1.default.get(`${dotenvConfig_1.API_URL}/league-list?key=${dotenvConfig_1.API_KEY}&chosen_leagues_only=true`);
         return response.data;
     }
     catch (error) {

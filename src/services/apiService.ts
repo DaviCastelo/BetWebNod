@@ -99,7 +99,7 @@ export const getLeagueReferees = async (seasonId: string) => {
 
 export const getIndividualTeam = async (teamId: string) => {
   try {
-    const BASE_URL = `${API_URL}/team?key=${API_KEY}&team_id=${teamId}&include=stats`;
+    const BASE_URL = `${API_URL}/team?key=${API_KEY}&team_id=${teamId}`;
     const response = await axios.get(BASE_URL);
     return response.data;
   } catch (error) {
@@ -160,5 +160,25 @@ export const getReferee = async (refereeId: string) => {
   } catch (error) {
     console.error("Erro ao obter dados do árbitro:", error);
     throw new Error("Erro ao buscar times");
+  }
+};
+
+export const getOdd2Dot5 = async () => {
+  try {
+    const BASE_URL = `${API_URL}/stats-data-over25?key=${API_KEY}`;
+    const response = await axios.get(BASE_URL);
+    return response.data;
+  } catch (error) {
+    throw new Error("Erro ao obter odds");
+  }
+};
+
+export const BTTSStats = async () => {
+  try {
+    const BASE_URL = `${API_URL}/stats-data-btts?key=${API_KEY}`;
+    const response = await axios.get(BASE_URL);
+    return response.data;
+  } catch (error) {
+    throw new Error("Error BTTS");
   }
 };

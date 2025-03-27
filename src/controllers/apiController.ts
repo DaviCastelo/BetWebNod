@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import {
+  BTTSStats,
   getCountry,
   getIndividualTeam,
   getLastStatsTeam,
@@ -11,6 +12,7 @@ import {
   getLeagueTable,
   getLeagueTeams,
   getMatchDetails,
+  getOdd2Dot5,
   getPlayer,
   getReferee,
   getTodayMatches,
@@ -303,5 +305,30 @@ export const searchReferee = async (
     res
       .status(500)
       .json({ success: false, message: "Erro ao buscar dados do jogador" });
+  }
+};
+
+export const getOdds = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const oddsData = await getOdd2Dot5();
+    res.json(oddsData);
+    return;
+  } catch (error) {
+    console.error("Erro ao obter ODDS:", error);
+    res.status(500).json({ success: false, message: "Erro ao buscar ODDS" });
+  }
+};
+
+export const getBTTSStats = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const bttsData = await BTTSStats();
+    res.json(bttsData);
+    return;
+  } catch (error) {
+    console.error("Erro ao obter BTTS:", error);
+    res.status(500).json({ success: false, message: "Erro ao buscar BTTS" });
   }
 };
