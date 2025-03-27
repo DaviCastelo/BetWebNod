@@ -9,14 +9,23 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+//app.use(
+  //cors({
+    //origin: "*",
+    //methods: ["GET", "POST", "PUT", "DELETE"],
+    //allowedHeaders: ["Content-Type", "Authorization"],
+  //})
+//);
 app.use(
   cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: "*", // Permite qualquer origem
+    methods: "*", // Permite todos os métodos HTTP
+    allowedHeaders: "*", // Permite todos os cabeçalhos
+    exposedHeaders: "*", // Expõe todos os cabeçalhos na resposta
+    credentials: true, // Permite credenciais (cookies, auth headers)
+    maxAge: 86400, // Cache de CORS por 24 horas
   })
 );
-
 app.use(express.json());
 app.use("/api", apiRoutes);
 app.use("/api/footystats", apiRoutes);
